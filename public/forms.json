@@ -1,0 +1,35 @@
+[
+  {
+    "id": "configure-customer-status",
+    "name": "Configure Customer Status",
+    "description": "Configure the customer status.",
+    "fields": [
+      {
+        "id": "customer",
+        "name": "Customer",
+        "type": "shortText",
+        "defaultValue": "John Doe"
+      },
+      {
+        "id": "status",
+        "name": "Status",
+        "type": "select",
+        "defaultValue": [
+          "Active"
+        ],
+        "options": [
+          "Active",
+          "Inactive"
+        ]
+      },
+      {
+        "id": "date",
+        "name": "Date",
+        "type": "date"
+      }
+    ],
+    "actions:": [
+      "action:add-customer:"
+    ]
+  }
+]

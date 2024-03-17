@@ -1,0 +1,9 @@
+[
+  {
+    "name": "add-customer",
+    "action": "api",
+    "url": "",
+    "method": "POST",
+    "body": ""
+  }
+]
