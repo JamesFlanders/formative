@@ -1,9 +1,9 @@
 <template>
-  <label class="form-label" :for="props.name">{{ props.name }}</label>
-  <input type="date" class="form-control"/>
+  <label class="form-label" :for="props.id">{{ props.name }}</label>
+  <input type="date" :name="props.id" class="form-control"/>
 </template>
 <script setup>
-const props = defineProps({name: String});
+const props = defineProps({id: String, name: String});
 </script>
 <script>
 export default {
