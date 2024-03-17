@@ -3,7 +3,7 @@
   <input type="date" class="form-control"/>
 </template>
 <script setup>
-const props = defineProps({"name": String});
+const props = defineProps({name: String});
 </script>
 <script>
 export default {

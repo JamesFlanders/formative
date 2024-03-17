@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-light bg-dark">
+  <nav class="navbar navbar-light bg-primary">
     <router-link class="navbar-brand" to="/">
-      <img src="../public/images/placeholder.svg" width="30" height="30" alt="">
+      <img src="../public/images/logo.png" width="30" height="30" alt="">
     </router-link>
   </nav>
   <main>
@@ -20,6 +20,7 @@
 body {
   margin: 0;
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  background-color: #DBDBDB;
 }
 
 body main {

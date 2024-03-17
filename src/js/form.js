@@ -18,22 +18,21 @@ function addVueElement(field) {
     let vueComponent = null
     if (field.type === "shortText") {
         vueComponent = h(ShortTextField, {
+            id: field.id,
             name: field.name,
             value: field.defaultValue,
-            onInput(event) {
-                alert(this[name])
-                this[name] = event.target.value
-            }
         })
     }
     if (field.type === "longText") {
         vueComponent = h(LongTextField, {
+            id: field.id,
             name: field.name,
             value: field.defaultValue
         })
     }
     if (field.type === "select") {
         vueComponent = h(SelectField, {
+            id: field.id,
             name: field.name,
             options: field.options,
             value: field.defaultValue
@@ -41,6 +40,7 @@ function addVueElement(field) {
     }
     if (field.type === "date") {
         vueComponent = h(DateField, {
+            id: field.id,
             name: field.name,
         })
     }

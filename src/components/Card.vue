@@ -1,6 +1,6 @@
 <template>
   <article class="card">
-    <img class="card-img-top" src="../../public/images/placeholder.svg" alt="placeholder.png">
+    <img class="card-img-top" src="../../public/images/logo.png" alt="placeholder.png">
     <aside class="card-body">
       <h1 class="card-title">{{ form.name }}</h1>
       <p class="card-text">{{ form.description }}</p>
@@ -16,7 +16,7 @@
 
 .card-img-top {
   padding: 40px;
-  background: lightblue;
+  background: var(--bs-secondary);
 }
 
 .card-title {

@@ -2,12 +2,12 @@
   <section class="container form-control">
     <section class="row">
       <aside class="col col-left">
-        <img src="../../public/images/placeholder.svg" alt="placeholder.png">
+        <img src="../../public/images/logo.png" alt="placeholder.png">
         <h1 class="card-title">{{ form.name }}</h1>
         <p class="card-text">{{ form.description }}</p>
       </aside>
       <aside class="col col-right">
-        <form @submit="performAction" id="card-form">
+        <form @submit.prevent="performAction" id="card-form">
           <article v-for="item in getFieldComponents(form.fields)">
             <component :is="item"/>
           </article>
@@ -32,7 +32,7 @@
 
 .col-left {
   padding: 25px;
-  background: lightblue;
+  background: var(--bs-secondary);
 }
 
 

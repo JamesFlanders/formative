@@ -6,7 +6,7 @@
 </template>
 <script setup>
 const value = defineModel("value")
-const props = defineProps({name: String})
+const props = defineProps({id: String, name: String})
 </script>
 <script>
 export default {

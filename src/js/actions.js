@@ -1,7 +1,8 @@
 export function performAction(event) {
-    event.preventDefault();
-    alert(this.Customer)
-    alert(this.Status)
+    let form = event.target.elements;
+    for (let i = 0; i < form.length; i++) {
+        alert(form[i].value)
+    }
 }
 
 function performApiAction(form) {
