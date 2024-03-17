@@ -28,7 +28,7 @@
         "type": "date"
       }
     ],
-    "actions:": [
+    "actions": [
       "action:add-customer:"
     ]
   }
