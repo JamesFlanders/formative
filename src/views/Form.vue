@@ -6,7 +6,7 @@
         <h1 class="card-title">{{ form.name }}</h1>
         <p class="card-text">{{ form.description }}</p>
       </aside>
-      <aside class="col col-right">
+      <aside class="col col-right col-8">
         <form @submit.prevent="performAction" id="card-form">
           <article v-for="item in getFieldComponents(form.fields)">
             <component :is="item"/>
@@ -28,6 +28,10 @@
 
 .container {
   padding: 0;
+}
+
+.row {
+  margin: 0;
 }
 
 .col-left {
