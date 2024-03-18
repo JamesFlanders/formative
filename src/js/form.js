@@ -17,10 +17,17 @@ export function getFieldComponents(fields) {
 
 function addVueElement(field) {
     let vueComponent = null
+
+    let required = field.required
+    if (required === undefined || required === null) {
+        required = false
+    }
+
     if (field.type === "shortText") {
         vueComponent = h(ShortTextField, {
             id: field.id,
             name: field.name,
+            required: required,
             value: field.defaultValue,
         })
     }
@@ -28,6 +35,7 @@ function addVueElement(field) {
         vueComponent = h(LongTextField, {
             id: field.id,
             name: field.name,
+            required: required,
             value: field.defaultValue
         })
     }
@@ -35,6 +43,7 @@ function addVueElement(field) {
         vueComponent = h(NumberField, {
             id: field.id,
             name: field.name,
+            required: required,
             value: field.defaultValue
         })
     }
@@ -42,6 +51,7 @@ function addVueElement(field) {
         vueComponent = h(SelectField, {
             id: field.id,
             name: field.name,
+            required: required,
             options: field.options,
             value: field.defaultValue
         })
@@ -50,6 +60,7 @@ function addVueElement(field) {
         vueComponent = h(DateField, {
             id: field.id,
             name: field.name,
+            required: required
         })
     }
     return vueComponent

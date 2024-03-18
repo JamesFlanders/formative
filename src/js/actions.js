@@ -70,24 +70,16 @@ function performApiAction(fields, action) {
         let body = parseFieldParameters(fields, action.body);
         return fetch(url, {
             method: action.method,
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: {'Content-Type': 'application/json'},
             body: body
         }).then((response) => {
-            if (response.ok) {
-                return response.json();
-            }
+            return response.json();
         });
     }
     return fetch(url, {
         method: action.method,
-        headers: {
-            'Content-Type': 'application/json'
-        }
+        headers: {'Content-Type': 'application/json'}
     }).then((response) => {
-        if (response.ok) {
-            return response.json();
-        }
+        return response.json();
     });
 }

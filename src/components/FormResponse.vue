@@ -54,6 +54,6 @@ main footer {
 
 export default {
   name: 'FormResponse',
-  props: ['statusCode', 'statusMessage', 'data']
+  props: ['data']
 }
 </script>

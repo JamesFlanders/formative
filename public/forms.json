@@ -8,6 +8,7 @@
         "id": "customer",
         "name": "Customer",
         "type": "shortText",
+        "required": true,
         "defaultValue": "John Doe"
       },
       {
