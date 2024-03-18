@@ -12,11 +12,12 @@
 .card {
   float: left;
   width: 20%;
+  margin: 2.5%;
 }
 
 .card-img-top {
   padding: 40px;
-  background: var(--bs-secondary);
+  background: var(--bs-primary-bg-subtle);
 }
 
 .card-title {

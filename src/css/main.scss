@@ -2,14 +2,14 @@
 @import "node_modules/bootstrap/scss/variables";
 
 $primary: rgb(39, 130, 111);
-$secondary: rgba(87, 204, 153, 0.2);
+$primary-bg-subtle: rgba(87, 204, 153, 0.2);
 
 $dark: rgb(35, 31, 32);
 
 
 $theme-colors: map-merge($theme-colors, (
         "primary": $primary,
-        "secondary": $secondary,
+        "primary-bg-subtle": $primary-bg-subtle,
         "dark": $dark
 ));
 

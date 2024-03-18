@@ -45,5 +45,35 @@
         }
       }
     ]
+  },
+  {
+    "id": "get-activity-when-bored",
+    "name": "Get Activity when Bored",
+    "description": "Get an activity so you can brighten your day when bored.",
+    "fields": [
+      {
+        "id": "type",
+        "name": "Type",
+        "type": "select",
+        "options": [
+          "social",
+          "recreational",
+          "music",
+          "diy"
+        ]
+      },
+      {
+        "id": "participants",
+        "name": "Participants",
+        "type": "number"
+      }
+    ],
+    "actions": [
+      {
+        "action": "api",
+        "url": "https://www.boredapi.com/api/activity?participants={{participants}}&type={{type}}",
+        "method": "GET"
+      }
+    ]
   }
 ]

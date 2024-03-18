@@ -1,8 +1,9 @@
 import {h} from "vue";
-import ShortTextField from "@/components/ShortTextField.vue";
-import SelectField from "@/components/SelectField.vue";
-import LongTextField from "@/components/LongTextField.vue";
-import DateField from "@/components/DateField.vue";
+import ShortTextField from "@/components/fields/ShortTextField.vue";
+import SelectField from "@/components/fields/SelectField.vue";
+import LongTextField from "@/components/fields/LongTextField.vue";
+import DateField from "@/components/fields/DateField.vue";
+import NumberField from "@/components/fields/NumberField.vue";
 
 
 export function getFieldComponents(fields) {
@@ -25,6 +26,13 @@ function addVueElement(field) {
     }
     if (field.type === "longText") {
         vueComponent = h(LongTextField, {
+            id: field.id,
+            name: field.name,
+            value: field.defaultValue
+        })
+    }
+    if (field.type === 'number') {
+        vueComponent = h(NumberField, {
             id: field.id,
             name: field.name,
             value: field.defaultValue

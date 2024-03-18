@@ -1,16 +1,42 @@
-export function performAction(event) {
+import {h, render} from "vue";
+import FormResponse from "@/components/FormResponse.vue";
+
+export async function performAction(event) {
     let formElements = event.target.elements;
+    let submitButton = document.getElementById("card-submit");
+    setButtonToLoading(submitButton);
     let actions = this.form.actions;
     let fields = parseFormElements(formElements);
 
+    let data;
     for (let i = 0; i < actions.length; i++) {
         let action = actions[i];
         if (action.action === 'api') {
-            let response = performApiAction(fields, action);
+            data = await performApiAction(fields, action);
         }
     }
+    loadResponse(data);
 }
 
+function setButtonToLoading(button) {
+    button.setAttribute("disabled", "true");
+    button.innerText = "";
+    let spanElement = document.createElement('span');
+    spanElement.className = 'spinner-border spinner-border-sm';
+    spanElement.setAttribute('role', 'status');
+    spanElement.setAttribute('aria-hidden', 'true');
+    button.appendChild(spanElement);
+}
+
+function loadResponse(data) {
+    let aside = document.getElementById("col-right");
+    let form = document.getElementById("card-form");
+    form.remove()
+    let formResponseComponent = h(FormResponse, {
+        data: data
+    })
+    render(formResponseComponent, aside)
+}
 
 function parseFormElements(formElements) {
     let values = {}
@@ -42,11 +68,26 @@ function performApiAction(fields, action) {
     let url = parseFieldParameters(fields, action.url);
     if (action.hasOwnProperty("body")) {
         let body = parseFieldParameters(fields, action.body);
-        return fetch(url, {method: action.method, body: body}).then(response => {
-            return response.json();
+        return fetch(url, {
+            method: action.method,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: body
+        }).then((response) => {
+            if (response.ok) {
+                return response.json();
+            }
         });
     }
-    return fetch(url, {method: action.method}).then(response => {
-        return response.json();
+    return fetch(url, {
+        method: action.method,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then((response) => {
+        if (response.ok) {
+            return response.json();
+        }
     });
 }
