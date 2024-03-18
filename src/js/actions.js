@@ -78,7 +78,6 @@ function performApiAction(fields, action) {
     }
     return fetch(url, {
         method: action.method,
-        headers: {'Content-Type': 'application/json'}
     }).then((response) => {
         return response.json();
     });

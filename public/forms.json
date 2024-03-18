@@ -1,53 +1,5 @@
 [
   {
-    "id": "configure-customer-status",
-    "name": "Configure Customer Status",
-    "description": "Configure the customer status.",
-    "fields": [
-      {
-        "id": "customer",
-        "name": "Customer",
-        "type": "shortText",
-        "required": true,
-        "defaultValue": "John Doe"
-      },
-      {
-        "id": "status",
-        "name": "Status",
-        "type": "select",
-        "defaultValue": [
-          "Active"
-        ],
-        "options": [
-          "Active",
-          "Inactive"
-        ]
-      },
-      {
-        "id": "date",
-        "name": "Date",
-        "type": "date"
-      }
-    ],
-    "actions": [
-      {
-        "action": "api",
-        "url": "https://www.example.com/?customer={{customer}}&status={{status}}",
-        "method": "GET"
-      },
-      {
-        "action": "api",
-        "url": "https://www.example.com/",
-        "method": "POST",
-        "body": {
-          "customer": "{{customer}}",
-          "status": "{{status}}",
-          "date": "{{date}}"
-        }
-      }
-    ]
-  },
-  {
     "id": "get-activity-when-bored",
     "name": "Get Activity when Bored",
     "description": "Get an activity so you can brighten your day when bored.",
@@ -56,6 +8,7 @@
         "id": "type",
         "name": "Type",
         "type": "select",
+        "required": true,
         "options": [
           "social",
           "recreational",
@@ -73,6 +26,37 @@
       {
         "action": "api",
         "url": "https://www.boredapi.com/api/activity?participants={{participants}}&type={{type}}",
+        "method": "GET"
+      }
+    ]
+  },
+  {
+    "id": "get-information-postal-code",
+    "name": "Get Information by Postal Code",
+    "description": "Get some information about a city through giving the postal code and country code.",
+    "fields": [
+      {
+        "id": "country-code",
+        "name": "Country Code",
+        "type": "select",
+        "required": true,
+        "options": [
+          "be",
+          "nl",
+          "us"
+        ]
+      },
+      {
+        "id": "postal-code",
+        "name": "Postal Code",
+        "type": "number",
+        "required": true
+      }
+    ],
+    "actions": [
+      {
+        "action": "api",
+        "url": "https://api.zippopotam.us/{{country-code}}/{{postal-code}}",
         "method": "GET"
       }
     ]
