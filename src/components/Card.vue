@@ -1,6 +1,6 @@
 <template>
   <article class="card">
-    <img class="card-img-top" :src="require(`../../public/images/${form.image}`)" alt="placeholder.png">
+    <img class="card-img-top" :src="require(`../../public/images/${form.image}`)" :alt="form.image">
     <aside class="card-body">
       <h1 class="card-title">{{ form.name }}</h1>
       <p class="card-text">{{ form.description }}</p>

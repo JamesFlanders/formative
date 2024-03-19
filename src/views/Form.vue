@@ -2,7 +2,7 @@
   <section class="container form-control">
     <section class="row">
       <aside class="col-5" id="col-left">
-        <img src="../../public/images/logo.png" alt="placeholder.png">
+        <img :src="require(`../../public/images/${form.image}`)" :alt="form.image">
         <h1 class="card-title">{{ form.name }}</h1>
         <p class="card-text">{{ form.description }}</p>
       </aside>
