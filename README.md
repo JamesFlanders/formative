@@ -18,6 +18,10 @@ Formative is an out-of-the-box frontend for backend services that do not have a 
 use-cases for Formative:
 
 - You have a cool API, but do not have the frontend skills to provide an interface for the users of your API.
+- You want to manage information in a database without directly querying through SQL-queries.
+
+<sup>Disclaimer: These above-mentioned use-cases might not be supported yet as Formative is still in an early (alpha)
+phase.</sup>
 
 # :closed_book: Documentation
 
