@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="performAction" id="card-form">
     <article v-for="item in getFieldComponents(form.fields)">
-      <component :is="item"/>
+      <Component :is="item"/>
     </article>
     <button class="btn btn-primary" id="card-submit">Submit</button>
   </form>

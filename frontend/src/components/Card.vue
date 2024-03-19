@@ -4,7 +4,7 @@
     <aside class="card-body">
       <h1 class="card-title">{{ form.name }}</h1>
       <p class="card-text">{{ form.description }}</p>
-      <router-link class="btn btn-primary" :to="'/form/' + form.id">Request</router-link>
+      <RouterLink class="btn btn-primary" :to="'/form/' + form.id">Request</RouterLink>
     </aside>
   </article>
 </template>

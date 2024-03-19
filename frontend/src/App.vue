@@ -1,13 +1,13 @@
 <template>
   <nav class="navbar navbar-light bg-primary">
-    <router-link class="navbar-brand" to="/">
+    <RouterLink class="navbar-brand" to="/">
       <img src="../public/images/logo.png" width="30" height="30" alt="">
-    </router-link>
+    </RouterLink>
   </nav>
   <main>
-    <router-view v-slot="{ Component, route }">
-      <component :is="Component" view-prop="value"/>
-    </router-view>
+    <RouterView v-slot="{ Component, route }">
+      <Component :is="Component" view-prop="value"/>
+    </RouterView>
   </main>
 </template>
 <style>
