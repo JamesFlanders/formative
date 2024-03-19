@@ -6,7 +6,7 @@
     <section>
       <p v-for="(value, key) in this.currentResponse"><b>{{ key }}</b>: {{ value }}</p>
     </section>
-    <aside v-if="this.hasMultipleResponses" class="btn-group" role="group" aria-label="Basic example">
+    <aside v-if="this.hasMultipleResponses" class="btn-group">
       <button @click="renderPreviousResponse" class="btn btn-primary" :disabled="offset <= 0">
         Previous
       </button>
