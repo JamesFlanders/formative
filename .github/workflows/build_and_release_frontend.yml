@@ -83,7 +83,7 @@ jobs:
         id: create_release
         with:
           draft: false
-          prerelease: false
+          prerelease: true
           release_name: ${{ github.ref }}
           tag_name: ${{ github.ref }}
         env:
