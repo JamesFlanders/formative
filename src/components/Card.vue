@@ -25,6 +25,11 @@
   font-weight: bold;;
 }
 
+.card-text {
+  font-size: 14px;
+  height: 75px;
+}
+
 .btn {
   width: 100%;
 }
