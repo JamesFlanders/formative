@@ -66,19 +66,24 @@ function parseFieldParameters(fields, value) {
 
 function performApiAction(fields, action) {
     let url = parseFieldParameters(fields, action.url);
+    let body = null;
+    let headers = {};
+
     if (action.hasOwnProperty("body")) {
-        let body = parseFieldParameters(fields, action.body);
-        return fetch(url, {
-            method: action.method,
-            headers: {'Content-Type': 'application/json'},
-            body: body
-        }).then((response) => {
-            return response.json();
-        });
+        body = parseFieldParameters(fields, action.body);
     }
+
+    if (action.hasOwnProperty("headers")) {
+        headers = action.headers
+    }
+
     return fetch(url, {
         method: action.method,
+        headers: headers,
+        body: body
     }).then((response) => {
         return response.json();
+    }).catch((errorResponse) => {
+        return errorResponse;
     });
 }
