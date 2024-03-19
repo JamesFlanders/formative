@@ -33,7 +33,7 @@ jobs:
       - name: Zip 'dist' Artifact
         uses: vimtor/action-zip@v1.2
         with:
-          files: dist/
+          files: frontend/dist
           dest: dist.zip
 
       - name: Upload 'dist' Artifact
