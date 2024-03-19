@@ -93,7 +93,9 @@ function performApiAction(fields, action) {
         headers: headers,
         body: body
     }).then((response) => {
-        return response.json();
+        return response.json().then((data) => {
+            return {data: data, status: response.status};
+        });
     }).catch((errorResponse) => {
         return errorResponse;
     });
