@@ -1,16 +1,16 @@
 <template>
   <div v-for="form in forms">
-    <Card :form="form"/>
+    <FormCard :form="form"/>
   </div>
 </template>
 <script>
 import forms from '../../public/forms.json';
-import Card from "@/components/Card.vue";
+import FormCard from "@/components/FormCard.vue";
 
 export default {
   name: "Home",
   components: {
-    Card
+    FormCard
   },
   data() {
     return {

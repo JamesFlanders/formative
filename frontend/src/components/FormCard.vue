@@ -37,7 +37,7 @@
 </style>
 <script>
 export default {
-  name: "Card",
+  name: "FormCard",
   props: ["form"]
 }
 </script>

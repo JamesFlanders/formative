@@ -43,7 +43,7 @@ aside img {
 </style>
 <script>
 import forms from '../../public/forms.json';
-import Card from "@/components/Card.vue";
+import FormCard from "@/components/FormCard.vue";
 import FormFields from "@/components/FormFields.vue";
 
 
@@ -51,7 +51,7 @@ export default {
   name: "CardForm",
   components: {
     FormFields,
-    Card
+    FormCard
   },
   data() {
     return {
