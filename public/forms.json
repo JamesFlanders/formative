@@ -61,6 +61,11 @@
         "action": "api",
         "url": "https://api.zippopotam.us/{{country-code}}/{{postal-code}}",
         "method": "GET"
+      },
+      {
+        "action": "api",
+        "url": "https://restcountries.com/v3.1/alpha/{{country-code}}",
+        "method": "GET"
       }
     ]
   }

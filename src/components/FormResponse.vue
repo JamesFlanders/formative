@@ -4,8 +4,16 @@
       <p><b>Status</b></p>
     </header>
     <section>
-      <p v-for="(value, key) in data"><b>{{ key }}</b>: {{ value }}</p>
+      <p v-for="(value, key) in this.currentResponse"><b>{{ key }}</b>: {{ value }}</p>
     </section>
+    <aside v-if="this.hasMultipleResponses" class="btn-group" role="group" aria-label="Basic example">
+      <button @click="renderPreviousResponse" class="btn btn-primary" :disabled="offset <= 0">
+        Previous
+      </button>
+      <button @click="renderNextResponse" class="btn btn-primary" :disabled="this.responses.length <= (offset + 1)">
+        Next
+      </button>
+    </aside>
     <footer>
       <button onclick="window.location.reload();" class="btn btn-danger">Resend request</button>
       <router-link class="btn btn-primary" to="/">Go to home</router-link>
@@ -44,6 +52,10 @@ main section {
   border-radius: .25rem;
 }
 
+main aside {
+  width: 100%;
+}
+
 main footer {
   margin: 40px 0;
   width: 100%;
@@ -52,8 +64,25 @@ main footer {
 </style>
 <script>
 
+import {renderResponse} from "@/js/actions";
+
 export default {
   name: 'FormResponse',
-  props: ['data']
+  props: ['currentResponse', 'offset', 'responses'],
+  data() {
+    return {
+      hasMultipleResponses: this.responses.length > 1
+    }
+  },
+  methods: {
+    renderPreviousResponse() {
+      let offset = this.offset - 1;
+      renderResponse(this.responses, offset);
+    },
+    renderNextResponse() {
+      let offset = this.offset + 1;
+      renderResponse(this.responses, offset);
+    }
+  }
 }
 </script>

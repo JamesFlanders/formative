@@ -8,15 +8,35 @@ export async function performAction(event) {
     let actions = this.form.actions;
     let fields = parseFormElements(formElements);
 
-    let data;
+    let responses = [];
     for (let i = 0; i < actions.length; i++) {
         let action = actions[i];
         if (action.action === 'api') {
-            data = await performApiAction(fields, action);
+            let response = await performApiAction(fields, action);
+            responses.push(response);
         }
     }
-    loadResponse(data);
+    renderResponse(responses, 0);
 }
+
+
+export function renderResponse(responses, offset) {
+    let aside = document.getElementById("col-right");
+    let form = document.getElementById("card-form");
+
+    if (form !== undefined && form !== null) {
+        form.remove()
+    }
+
+    let currentResponse = responses[offset];
+    let formResponseComponent = h(FormResponse, {
+        currentResponse: currentResponse,
+        offset: offset,
+        responses: responses
+    })
+    render(formResponseComponent, aside);
+}
+
 
 function setButtonToLoading(button) {
     button.setAttribute("disabled", "true");
@@ -28,15 +48,6 @@ function setButtonToLoading(button) {
     button.appendChild(spanElement);
 }
 
-function loadResponse(data) {
-    let aside = document.getElementById("col-right");
-    let form = document.getElementById("card-form");
-    form.remove()
-    let formResponseComponent = h(FormResponse, {
-        data: data
-    })
-    render(formResponseComponent, aside)
-}
 
 function parseFormElements(formElements) {
     let values = {}
