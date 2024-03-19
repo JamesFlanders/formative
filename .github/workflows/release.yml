@@ -18,18 +18,18 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 21.7.1
-      - run: npm build
+      - run: npm run build
 
   release:
     runs-on: ubuntu-latest
     steps:
-    - name: Create Release
-      uses: actions/create-release@v1
-      id: create_release
-      with:
-        draft: false
-        prerelease: false
-        release_name: ${{ github.ref }}
-        tag_name: ${{ github.ref }}
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
+      - name: Create Release
+        uses: actions/create-release@v1
+        id: create_release
+        with:
+          draft: false
+          prerelease: false
+          release_name: ${{ github.ref }}
+          tag_name: ${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
