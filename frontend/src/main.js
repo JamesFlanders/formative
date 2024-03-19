@@ -4,6 +4,7 @@ import {createRouter, createWebHistory} from "vue-router";
 import Home from "@/views/Home.vue";
 import Form from "@/views/Form.vue";
 
+import 'material-icons/iconfont/material-icons.css';
 import '@/css/main.scss'
 
 const routes = [

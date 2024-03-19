@@ -3,7 +3,10 @@
     <header id="status">
       <p><b>Status</b>: {{ this.currentResponse.status }}</p>
     </header>
-    <pre> {{ this.currentResponse.data }}</pre>
+    <section>
+      <span @click="copyToClipboard" class="material-icons">content_copy</span>
+      <pre>{{ this.currentResponse.data }}</pre>
+    </section>
     <aside v-if="this.hasMultipleResponses" class="btn-group">
       <button @click="renderPreviousResponse" class="btn btn-primary" :disabled="offset <= 0">
         Previous
@@ -40,14 +43,29 @@ main header {
   border-radius: .25rem;
 }
 
-main pre {
+main section {
+  position: relative;
   margin: 40px 0;
-  padding: 10px;
-  width: 100%;
-  overflow-x: scroll;
   background: var(--bs-gray-200);
   border: 1px solid var(--bs-gray-300);
   border-radius: .25rem;
+}
+
+main section pre {
+  padding: 10px;
+  width: 100%;
+  overflow-x: scroll;
+}
+
+main section span {
+  position: absolute;
+  font-size: 20px;
+  top: 8px;
+  right: 8px;
+}
+
+main section span:hover {
+  cursor: pointer;
 }
 
 main aside {
@@ -76,6 +94,10 @@ export default {
     this.setBackgroundColorByStatus(this.currentResponse.status);
   },
   methods: {
+    copyToClipboard() {
+      let pre = document.getElementsByTagName("pre")[0];
+      navigator.clipboard.writeText(pre.innerText);
+    },
     setBackgroundColorByStatus(status) {
       let header = document.getElementById("status");
       if (status <= 100) {
