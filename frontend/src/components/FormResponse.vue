@@ -1,10 +1,9 @@
 <template>
-  <main>
+  <main class="col-8">
     <header id="status">
       <p><b>Status</b>: {{ this.currentResponse.status }}</p>
     </header>
-    <section id="data">
-    </section>
+    <pre> {{ this.currentResponse.data }}</pre>
     <aside v-if="this.hasMultipleResponses" class="btn-group">
       <button @click="renderPreviousResponse" class="btn btn-primary" :disabled="offset <= 0">
         Previous
@@ -41,9 +40,11 @@ main header {
   border-radius: .25rem;
 }
 
-main section {
+main pre {
   margin: 40px 0;
   padding: 10px;
+  width: 100%;
+  overflow-x: scroll;
   background: var(--bs-gray-200);
   border: 1px solid var(--bs-gray-300);
   border-radius: .25rem;
@@ -72,30 +73,9 @@ export default {
     }
   },
   mounted() {
-    this.setDataText(this.currentResponse.data);
     this.setBackgroundColorByStatus(this.currentResponse.status);
   },
   methods: {
-    setDataText(json) {
-      let section = document.getElementById("data")
-      for (const key in json) {
-        if (json.hasOwnProperty(key)) {
-          if (typeof json[key] === "object") {
-            this.setDataText(json[key])
-          } else {
-            let paragraph = document.createElement("p");
-            paragraph.style.margin = "0";
-            let boldElement = document.createElement("b");
-            boldElement.innerText = key
-            let spanElement = document.createElement("span");
-            spanElement.innerText = ": " + json[key];
-            paragraph.appendChild(boldElement);
-            paragraph.appendChild(spanElement);
-            section.appendChild(paragraph);
-          }
-        }
-      }
-    },
     setBackgroundColorByStatus(status) {
       let header = document.getElementById("status");
       if (status <= 100) {
@@ -110,21 +90,13 @@ export default {
         header.style.borderColor = "var(--bs-danger-border-subtle)";
       }
     },
-    clearDataText() {
-      let section = document.getElementById("data");
-      section.innerText = "";
-    },
     renderPreviousResponse() {
       let offset = this.offset - 1;
-      this.clearDataText();
-      this.setDataText(this.responses[offset].data);
       this.setBackgroundColorByStatus(this.responses[offset].status);
       renderResponse(this.responses, offset);
     },
     renderNextResponse() {
       let offset = this.offset + 1;
-      this.clearDataText();
-      this.setDataText(this.responses[offset].data);
       this.setBackgroundColorByStatus(this.responses[offset].status);
       renderResponse(this.responses, offset);
     }

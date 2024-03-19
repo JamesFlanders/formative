@@ -1,12 +1,12 @@
 <template>
   <section class="container form-control">
     <section class="row">
-      <aside class="col-5" id="col-left">
+      <aside class="col-4" id="col-left">
         <img :src="require(`../../public/images/${form.image}`)" :alt="form.image">
         <h1 class="card-title">{{ form.name }}</h1>
         <p class="card-text">{{ form.description }}</p>
       </aside>
-      <aside class="col" id="col-right">
+      <aside class="col-8" id="col-right">
         <FormFields :form="form"/>
       </aside>
     </section>
