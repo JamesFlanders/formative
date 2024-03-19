@@ -20,7 +20,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup NodeJS {{ env.node-version }}
+      - name: Setup NodeJS 21.7.1
         uses: actions/setup-node@v3
         with:
           node-version: 21.7.1
