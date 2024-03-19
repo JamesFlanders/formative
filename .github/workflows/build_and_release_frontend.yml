@@ -9,9 +9,7 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}-frontend
 
-permissions:
-  actions: write
-  contents: write
+permissions: write-all
 
 defaults:
   run:
