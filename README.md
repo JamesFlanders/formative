@@ -25,13 +25,42 @@ For further documentation or information, refer to the GitHub Wiki of this repos
 
 # :calendar: Roadmap
 
-## :a: Alpha
+## Stages of development
 
-## :b: Beta
+### :a: Alpha
 
-## :registered: Release
+**The MVP Phase**
+Within the alpha of Formative, it is the goal to achieve a minimal viable product (MVP) that has a rich set of basic
+features that makes Formative useful for many use-cases.
+
+#### Minimal conditions for Beta
+
+- [ ] Add additional action types (e.g 'SQL')
+- [ ] Add easy custom theme options
+- [ ] Add (sufficient) documentation on the usage of Formative
+- [ ] Add usage of users within Formative
+- [ ] Add Role Base Access Control (permissions) within Formative
+- [ ] Provide an easy-to-use form editor for it within Formative.
+
+### :b: Beta
+
+**The Stabilisation Phase**\
+Within the beta of Formative, it is the goal to achieve a stable platform that can be safely used in even '
+enterprise' environments.
+
+#### Minimal conditions for Release
+
+To be defined once we have surpassed the Alpha phase.
+
+### :registered: Release
+
+**The Release Phase**
+Within this release phase, all mentioned goals in the other 2 phases have been completed, and the idea is now to keep
+the Formative 'fresh' with features and regular updates and patches.
 
 # :handshake: Contributing
+
+TBD
 
 # :copyright: License
 
