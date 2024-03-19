@@ -1,6 +1,6 @@
 FROM node:21.7.1-alpine3.19
 
-COPY ./frontend .
+COPY . .
 
 WORKDIR .
 
