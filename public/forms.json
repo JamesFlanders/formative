@@ -2,6 +2,7 @@
   {
     "id": "get-activity-when-bored",
     "name": "Get Activity when Bored",
+    "image": "sprint.svg",
     "description": "Get an activity so you can brighten your day when bored.",
     "fields": [
       {
@@ -36,6 +37,7 @@
   {
     "id": "get-information-postal-code",
     "name": "Get Information by Postal Code",
+    "image": "markunreadmailbox.svg",
     "description": "Get some information about a city through giving the postal code and country code.",
     "fields": [
       {
