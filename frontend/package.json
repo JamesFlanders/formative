@@ -1,5 +1,5 @@
 {
-  "name": "csorc-central-ui",
+  "name": "formative",
   "version": "0.0.1",
   "scripts": {
     "serve": "vue-cli-service serve",
