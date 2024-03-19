@@ -16,13 +16,16 @@ jobs:
       run:
         working-directory: ./frontend
     steps:
-      - uses: actions/checkout@v3
-      - name: Build with NodeJS
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup NodeJS {{{ env.node-version }}}
         uses: actions/setup-node@v3
         with:
           node-version: 21.7.1
-      - run: npm install
-      - run: npm run build
+      - name: Install dependencies
+        run: npm install
+      - name: Build NodeJS
+        run: npm run build
 
   release:
     runs-on: ubuntu-latest
@@ -37,3 +40,15 @@ jobs:
           tag_name: ${{ github.ref }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Zip 'dist' Artifact
+        uses: vimtor/action-zip@v1.2
+        with:
+          files: dist/
+          dest: dist.zip
+
+      - name: Upload 'dist' Artifact
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          name: dist.zip
+          path: dist.zip
