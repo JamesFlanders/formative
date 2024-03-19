@@ -1,5 +1,7 @@
 FROM node:21.7.1-alpine3.19
 
+COPY ./frontend .
+
 WORKDIR .
 
 RUN npm install && npm run build
