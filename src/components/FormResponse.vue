@@ -3,8 +3,7 @@
     <header id="status">
       <p><b>Status</b>: {{ this.currentResponse.status }}</p>
     </header>
-    <section>
-      <p v-for="(value, key) in this.currentResponse.data"><b>{{ key }}</b>: {{ value }}</p>
+    <section id="data">
     </section>
     <aside v-if="this.hasMultipleResponses" class="btn-group">
       <button @click="renderPreviousResponse" class="btn btn-primary" :disabled="offset <= 0">
@@ -73,9 +72,30 @@ export default {
     }
   },
   mounted() {
+    this.setDataText(this.currentResponse.data);
     this.setBackgroundColorByStatus(this.currentResponse.status);
   },
   methods: {
+    setDataText(json) {
+      let section = document.getElementById("data")
+      for (const key in json) {
+        if (json.hasOwnProperty(key)) {
+          if (typeof json[key] === "object") {
+            this.setDataText(json[key])
+          } else {
+            let paragraph = document.createElement("p");
+            paragraph.style.margin = "0";
+            let boldElement = document.createElement("b");
+            boldElement.innerText = key
+            let spanElement = document.createElement("span");
+            spanElement.innerText = ": " + json[key];
+            paragraph.appendChild(boldElement);
+            paragraph.appendChild(spanElement);
+            section.appendChild(paragraph);
+          }
+        }
+      }
+    },
     setBackgroundColorByStatus(status) {
       let header = document.getElementById("status");
       if (status <= 100) {
@@ -90,13 +110,21 @@ export default {
         header.style.borderColor = "var(--bs-danger-border-subtle)";
       }
     },
+    clearDataText() {
+      let section = document.getElementById("data");
+      section.innerText = "";
+    },
     renderPreviousResponse() {
       let offset = this.offset - 1;
+      this.clearDataText();
+      this.setDataText(this.responses[offset].data);
       this.setBackgroundColorByStatus(this.responses[offset].status);
       renderResponse(this.responses, offset);
     },
     renderNextResponse() {
       let offset = this.offset + 1;
+      this.clearDataText();
+      this.setDataText(this.responses[offset].data);
       this.setBackgroundColorByStatus(this.responses[offset].status);
       renderResponse(this.responses, offset);
     }
