@@ -33,7 +33,7 @@ For further documentation or information, refer to the GitHub Wiki of this repos
 
 ### :a: Alpha
 
-**The MVP Phase**
+**The MVP Phase**\
 Within the alpha of Formative, it is the goal to achieve a minimal viable product (MVP) that has a rich set of basic
 features that makes Formative useful for many use-cases.
 
@@ -54,11 +54,11 @@ enterprise' environments.
 
 #### Minimal conditions for Release
 
-To be defined once we have surpassed the Alpha phase.
+To be defined once the Alpha phase has surpassed.
 
 ### :registered: Release
 
-**The Release Phase**
+**The Release Phase**\
 Within this release phase, all mentioned goals in the other 2 phases have been completed, and the idea is now to keep
 the Formative 'fresh' with features and regular updates and patches.
 
