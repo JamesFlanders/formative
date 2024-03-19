@@ -3,7 +3,8 @@
 </p>
 <h1 align="center">Formative</h1>
 <p align="center">
-description
+<b>Form·ative</b> / <i>noun</i><br>
+Serving to form something
 </p>
 
 ---
@@ -12,9 +13,6 @@ description
 ---
 
 # :question: What is Formative ?
-
-**Form·ative** / _noun_ \
-Serving to form something
 
 Formative is an out-of-the-box frontend for backend services that do not have a frontend on their own. Some examples of
 use-cases for Formative:
@@ -32,6 +30,8 @@ For further documentation or information, refer to the GitHub Wiki of this repos
 ## :b: Beta
 
 ## :registered: Release
+
+# :handshake: Contributing
 
 # :copyright: License
 
