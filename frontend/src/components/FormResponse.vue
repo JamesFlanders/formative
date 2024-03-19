@@ -17,7 +17,6 @@
     </aside>
     <footer>
       <button onclick="window.location.reload();" class="btn btn-danger">Resend request</button>
-      <RouterLink tag="button" class="btn btn-primary" to="#">Go to home</RouterLink>
     </footer>
   </main>
 </template>
