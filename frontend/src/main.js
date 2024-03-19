@@ -1,6 +1,6 @@
 import App from "@/App.vue";
 import {createApp} from "vue";
-import {createRouter, createWebHashHistory} from "vue-router";
+import {createRouter, createWebHistory} from "vue-router";
 import Home from "@/views/Home.vue";
 import Form from "@/views/Form.vue";
 
@@ -12,7 +12,7 @@ const routes = [
 ]
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes
 })
 
