@@ -1,6 +1,6 @@
 <template>
   <main>
-    <header>
+    <header id="status">
       <p><b>Status</b>: {{ this.currentResponse.status }}</p>
     </header>
     <section>
@@ -39,8 +39,6 @@ main {
 main header {
   margin: 40px 0;
   padding: 10px;
-  background: var(--bs-success-bg-subtle);
-  border: 1px solid var(--bs-success-border-subtle);
   border-radius: .25rem;
 }
 
@@ -74,13 +72,32 @@ export default {
       hasMultipleResponses: this.responses.length > 1
     }
   },
+  mounted() {
+    this.setBackgroundColorByStatus(this.currentResponse.status);
+  },
   methods: {
+    setBackgroundColorByStatus(status) {
+      let header = document.getElementById("status");
+      if (status <= 100) {
+        header.style.backgroundColor = "var(--bs-info-bg-subtle)";
+        header.style.borderColor = "var(--bs-info-border-subtle)";
+      }
+      if (status >= 200 && status < 400) {
+        header.style.backgroundColor = "var(--bs-success-bg-subtle)";
+        header.style.borderColor = "var(--bs-success-border-subtle)";
+      } else {
+        header.style.backgroundColor = "var(--bs-danger-bg-subtle)";
+        header.style.borderColor = "var(--bs-danger-border-subtle)";
+      }
+    },
     renderPreviousResponse() {
       let offset = this.offset - 1;
+      this.setBackgroundColorByStatus(this.responses[offset].status);
       renderResponse(this.responses, offset);
     },
     renderNextResponse() {
       let offset = this.offset + 1;
+      this.setBackgroundColorByStatus(this.responses[offset].status);
       renderResponse(this.responses, offset);
     }
   }
