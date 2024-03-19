@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import forms from '../../public/forms.json';
+import forms from '../../public/config/forms.json';
 import FormCard from "@/components/FormCard.vue";
 
 export default {

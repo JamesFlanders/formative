@@ -42,7 +42,7 @@ aside img {
 
 </style>
 <script>
-import forms from '../../public/forms.json';
+import forms from '../../public/config/forms.json';
 import FormCard from "@/components/FormCard.vue";
 import FormFields from "@/components/FormFields.vue";
 
