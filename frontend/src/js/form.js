@@ -36,6 +36,9 @@ function addVueElement(field) {
         case "email":
             vueComponent = h(TextField, {id, name, subtype: "email", required, value: defaultValue});
             break;
+        case "secret":
+            vueComponent = h(TextField, {id, name, subtype: "password", required, value: defaultValue});
+            break;
         case 'number':
             vueComponent = h(NumberField, {id, name, required, value: defaultValue});
             break;
