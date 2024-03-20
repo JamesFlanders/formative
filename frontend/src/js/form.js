@@ -1,7 +1,7 @@
 import {h} from "vue";
-import ShortTextField from "@/components/fields/ShortTextField.vue";
+import TextField from "@/components/fields/TextField.vue";
 import SelectField from "@/components/fields/SelectField.vue";
-import LongTextField from "@/components/fields/LongTextField.vue";
+import TextAreaField from "@/components/fields/TextAreaField.vue";
 import DateField from "@/components/fields/DateField.vue";
 import NumberField from "@/components/fields/NumberField.vue";
 
@@ -30,17 +30,27 @@ function addVueElement(field) {
     }
 
     if (field.type === "shortText") {
-        vueComponent = h(ShortTextField, {
+        vueComponent = h(TextField, {
             id: field.id,
             name: field.name,
+            subtype: "text",
             required: required,
             value: field.defaultValue,
         })
     }
     if (field.type === "longText") {
-        vueComponent = h(LongTextField, {
+        vueComponent = h(TextAreaField, {
             id: field.id,
             name: field.name,
+            required: required,
+            value: field.defaultValue
+        })
+    }
+    if (field.type === "email") {
+        vueComponent = h(TextField, {
+            id: field.id,
+            name: field.name,
+            subtype: "email",
             required: required,
             value: field.defaultValue
         })
