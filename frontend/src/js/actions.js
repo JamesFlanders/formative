@@ -54,6 +54,11 @@ function parseFormElements(formElements) {
     for (let i = 0; i < formElements.length - 1; i++) {
         let formElement = formElements[i];
 
+        if (formElement.type === "checkbox") {
+            values[formElement.name] = formElement.checked
+            continue
+        }
+
         if (formElement.name === "multiselect") {
             let selectedOptions = [];
             for (let j = 0; j < formElement.options.length; j++) {
@@ -63,6 +68,7 @@ function parseFormElements(formElements) {
                 }
             }
             values[formElement.name] = selectedOptions;
+            continue
         }
 
         if (formElement.type === "radio" && formElement.checked === false) {

@@ -11,6 +11,9 @@ export function setChecked(inputName, value) {
         if (element.type === 'radio') {
             element.checked = element.value === value;
         }
+        if (element.type === 'checkbox') {
+            element.checked = value;
+        }
         if (element.multiple) {
             for (const option of element.options) {
                 option.selected = value.includes(option.value);
