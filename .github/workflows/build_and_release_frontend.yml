@@ -1,0 +1,103 @@
+name: Build and Release Frontend
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}-frontend
+
+permissions: write-all
+
+defaults:
+  run:
+    working-directory: ./frontend
+
+jobs:
+  build-dist-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup NodeJS 21.7.1
+        uses: actions/setup-node@v3
+        with:
+          node-version: 21.7.1
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build NodeJS
+        run: npm run build
+
+      - name: Zip 'dist' Artifact
+        uses: vimtor/action-zip@v1.2
+        with:
+          files: frontend/dist
+          dest: dist.zip
+
+      - name: Upload 'dist' Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist.zip
+          path: dist.zip
+
+  build-docker-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to the GitHub Docker registry
+        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
+        with:
+          context: ./frontend
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+  release:
+    runs-on: ubuntu-latest
+    needs:
+      - build-dist-package
+    steps:
+      - name: Create Release ${{ github.ref }}
+        uses: actions/create-release@v1
+        id: create_release
+        with:
+          draft: false
+          prerelease: true
+          release_name: ${{ github.ref }}
+          tag_name: ${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Download 'dist' artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist.zip
+
+      - name: Attach the Artifact to the Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: dist.zip
+          asset_name: dist-${{ github.ref_name }}.zip
+          asset_content_type: application/zip

@@ -1,0 +1,17 @@
+{
+  "name": "formative",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "@vue/cli-service": "^5.0.8",
+    "bootstrap": "^5.3.3",
+    "material-icons": "^1.13.12",
+    "sass": "^1.72.0",
+    "sass-loader": "^14.1.1",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
+  }
+}

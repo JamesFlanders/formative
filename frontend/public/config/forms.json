@@ -1,0 +1,74 @@
+[
+  {
+    "id": "get-activity-when-bored",
+    "name": "Get Activity when Bored",
+    "image": "sprint.svg",
+    "description": "Get an activity so you can brighten your day when bored.",
+    "fields": [
+      {
+        "id": "type",
+        "name": "Type",
+        "type": "select",
+        "required": true,
+        "options": [
+          "social",
+          "recreational",
+          "music",
+          "diy"
+        ]
+      },
+      {
+        "id": "participants",
+        "name": "Participants",
+        "type": "number"
+      }
+    ],
+    "actions": [
+      {
+        "action": "api",
+        "url": "https://www.boredapi.com/api/activity?participants={{participants}}&type={{type}}",
+        "method": "GET",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "get-information-postal-code",
+    "name": "Get Information by Postal Code",
+    "image": "markunreadmailbox.svg",
+    "description": "Get some information about a city through giving the postal code and country code.",
+    "fields": [
+      {
+        "id": "country-code",
+        "name": "Country Code",
+        "type": "select",
+        "required": true,
+        "options": [
+          "be",
+          "nl",
+          "us"
+        ]
+      },
+      {
+        "id": "postal-code",
+        "name": "Postal Code",
+        "type": "number",
+        "required": true
+      }
+    ],
+    "actions": [
+      {
+        "action": "api",
+        "url": "https://api.zippopotam.us/{{country-code}}/{{postal-code}}",
+        "method": "GET"
+      },
+      {
+        "action": "api",
+        "url": "https://restcountries.com/v3.1/alpha/{{country-code}}",
+        "method": "GET"
+      }
+    ]
+  }
+]
