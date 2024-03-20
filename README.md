@@ -34,7 +34,7 @@ docker run --name formative-frontend -t \
       -v volume_formative_images:/usr/share/nginx/html/images \
       -v volume_formative_config:/usr/share/nginx/html/config \
       --restart unless-stopped \
-      -d ghcr.io/JamesFlanders/formative/formative-frontend:latest
+      -d ghcr.io/jamesflanders/formative-frontend:latest
 ```
 
 This will start Formative and serve it on http://localhost:8080.
