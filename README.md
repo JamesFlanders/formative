@@ -8,7 +8,13 @@ Serving to form something
 </p>
 
 ---
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+<p align="center">
+<a href="https://opensource.org/licenses/MIT"><img alt="GitHub License" src="https://img.shields.io/github/license/JamesFlanders/formative"></a>
+<a href="https://github.com/JamesFlanders/formative/releases"><img alt="GitHub Release" src="https://img.shields.io/github/v/release/JamesFlanders/formative"></a>
+<a href="https://github.com/JamesFlanders/formative/actions/workflows/build_and_release_frontend.yml"><img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/JamesFlanders/formative/build_and_release_frontend.yml"></a>
+<a href="https://paypal.me/JensCaenen"><img alt="Static Badge" src="https://img.shields.io/badge/Donate-PayPal-blue"></a>
+</p>
 
 ---
 
