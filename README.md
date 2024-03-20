@@ -8,6 +8,7 @@ Serving to form something
 </p>
 
 ---
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![GitHub Release](https://img.shields.io/github/v/release/JamesFlanders/https%3A%2F%2Fgithub.com%2FJamesFlanders%2Fformative)
 
 ---
@@ -77,9 +78,11 @@ the Formative 'fresh' with features and regular updates and patches.
 
 # :handshake: Contributing
 
-TBD
+Contact me directly on GitHub if you are interested in contributing. No proper process for contributors has been
+developed yet.
 
 # :copyright: License
 
-TBD
+[MIT License](https://opensource.org/licenses/MIT)\
+Copyright (c) 2024 [James Flanders](https://github.com/JamesFlanders)
 
