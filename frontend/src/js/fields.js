@@ -1,9 +1,8 @@
 export function setRequired(inputName, value) {
-    const elements = document.getElementsByName(inputName);
-    for (const element of elements) {
-        element.required = value;
-    }
+    document.getElementsByName(inputName)
+        .forEach(element => element.required = value);
 }
+
 
 export function setChecked(inputName, value) {
     const elements = document.getElementsByName(inputName);
