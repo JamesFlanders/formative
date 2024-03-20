@@ -23,71 +23,31 @@ export function getFieldComponents(fields) {
 }
 
 function addVueElement(field) {
-    let vueComponent = null
+    let {id, name, type, required = false, defaultValue, options} = field;
+    let vueComponent = null;
 
-    let required = field.required
-    if (required === undefined || required === null) {
-        required = false
+    switch (type) {
+        case "shortText":
+            vueComponent = h(TextField, {id, name, subtype: "text", required, value: defaultValue});
+            break;
+        case "longText":
+            vueComponent = h(TextAreaField, {id, name, required, value: defaultValue});
+            break;
+        case "email":
+            vueComponent = h(TextField, {id, name, subtype: "email", required, value: defaultValue});
+            break;
+        case 'number':
+            vueComponent = h(NumberField, {id, name, required, value: defaultValue});
+            break;
+        case "select":
+            vueComponent = h(SelectField, {id, name, required, options, value: defaultValue});
+            break;
+        case "radio":
+            vueComponent = h(RadioField, {id, name, required, options, value: defaultValue});
+            break;
+        case "date":
+            vueComponent = h(DateField, {id, name, required});
+            break;
     }
-
-    if (field.type === "shortText") {
-        vueComponent = h(TextField, {
-            id: field.id,
-            name: field.name,
-            subtype: "text",
-            required: required,
-            value: field.defaultValue,
-        })
-    }
-    if (field.type === "longText") {
-        vueComponent = h(TextAreaField, {
-            id: field.id,
-            name: field.name,
-            required: required,
-            value: field.defaultValue
-        })
-    }
-    if (field.type === "email") {
-        vueComponent = h(TextField, {
-            id: field.id,
-            name: field.name,
-            subtype: "email",
-            required: required,
-            value: field.defaultValue
-        })
-    }
-    if (field.type === 'number') {
-        vueComponent = h(NumberField, {
-            id: field.id,
-            name: field.name,
-            required: required,
-            value: field.defaultValue
-        })
-    }
-    if (field.type === "select") {
-        vueComponent = h(SelectField, {
-            id: field.id,
-            name: field.name,
-            required: required,
-            options: field.options,
-            value: field.defaultValue
-        })
-    }
-    if (field.type === "radio") {
-        vueComponent = h(RadioField, {
-            id: field.id,
-            name: field.name,
-            required: required,
-            options: field.options,
-            value: field.defaultValue
-        })
-    }
-    if (field.type === "date") {
-        vueComponent = h(DateField, {
-            id: field.id,
-            name: field.name,
-            required: required
-        })
-    }
-    return vueComponent
+    return vueComponent;
 }
