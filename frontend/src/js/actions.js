@@ -24,7 +24,7 @@ export function renderResponse(responses, offset) {
     let aside = document.getElementById("col-right");
     let form = document.getElementById("card-form");
 
-    if (form !== undefined && form !== null) {
+    if (form) {
         form.remove()
     }
 
