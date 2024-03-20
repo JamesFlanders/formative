@@ -9,7 +9,6 @@ Serving to form something
 
 ---
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![GitHub Release](https://img.shields.io/github/v/release/JamesFlanders/https%3A%2F%2Fgithub.com%2FJamesFlanders%2Fformative)
 
 ---
 
