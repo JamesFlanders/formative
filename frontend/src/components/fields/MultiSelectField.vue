@@ -1,7 +1,7 @@
 <template>
   <label class="form-label" :for="props.id">{{ props.name }}</label>
   <select multiple class="form-select" :name="props.id">
-    <option v-for="option in options" :value="option" :selected="value">{{ option }}</option>
+    <option v-for="option in options" :value="option">{{ option }}</option>
   </select>
 </template>
 <script setup>
