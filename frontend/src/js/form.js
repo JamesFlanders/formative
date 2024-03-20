@@ -4,6 +4,7 @@ import SelectField from "@/components/fields/SelectField.vue";
 import TextAreaField from "@/components/fields/TextAreaField.vue";
 import DateField from "@/components/fields/DateField.vue";
 import NumberField from "@/components/fields/NumberField.vue";
+import RadioField from "@/components/fields/RadioField.vue";
 
 
 export function getFormConfiguration(path) {
@@ -65,6 +66,15 @@ function addVueElement(field) {
     }
     if (field.type === "select") {
         vueComponent = h(SelectField, {
+            id: field.id,
+            name: field.name,
+            required: required,
+            options: field.options,
+            value: field.defaultValue
+        })
+    }
+    if (field.type === "radio") {
+        vueComponent = h(RadioField, {
             id: field.id,
             name: field.name,
             required: required,

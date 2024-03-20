@@ -51,8 +51,11 @@ function setButtonToLoading(button) {
 
 function parseFormElements(formElements) {
     let values = {}
-    for (let i = 0; i < formElements.length; i++) {
+    for (let i = 0; i < formElements.length - 1; i++) {
         let formElement = formElements[i];
+        if (formElement.type === "radio" && formElement.checked === false) {
+            continue
+        }
         values[formElement.name] = formElement.value
     }
     return values
