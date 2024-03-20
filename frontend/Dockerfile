@@ -12,4 +12,7 @@ COPY --from=0 /dist /usr/share/nginx/html
 
 EXPOSE 80
 
+VOLUME /usr/share/nginx/html/images
+VOLUME /usr/share/nginx/html/config
+
 CMD ["nginx", "-g", "daemon off;"]

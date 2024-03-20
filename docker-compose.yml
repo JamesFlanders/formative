@@ -1,0 +1,11 @@
+services:
+  formative-frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    volumes:
+      - volume_formative_config:/usr/share/nginx/html/config
+      - volume_formative_images:/usr/share/nginx/html/images
+volumes:
+  volume_formative_config:
+  volume_formative_images:
