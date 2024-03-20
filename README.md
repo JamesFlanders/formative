@@ -40,6 +40,7 @@ features that makes Formative useful for many use-cases.
 #### Minimal conditions for Beta
 
 - [ ] Add additional action types (e.g 'SQL')
+- [ ] Add additional field types (e.g. 'Email', 'Radio', 'Range selector',...)
 - [ ] Add easy custom theme options
 - [ ] Add (sufficient) documentation on the usage of Formative
 - [ ] Add usage of users within Formative
