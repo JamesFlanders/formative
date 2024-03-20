@@ -53,6 +53,18 @@ function parseFormElements(formElements) {
     let values = {}
     for (let i = 0; i < formElements.length - 1; i++) {
         let formElement = formElements[i];
+
+        if (formElement.name === "multiselect") {
+            let selectedOptions = [];
+            for (let j = 0; j < formElement.options.length; j++) {
+                let option = formElement.options[j];
+                if (option.selected) {
+                    selectedOptions.push(option.value);
+                }
+            }
+            values[formElement.name] = selectedOptions;
+        }
+
         if (formElement.type === "radio" && formElement.checked === false) {
             continue
         }
