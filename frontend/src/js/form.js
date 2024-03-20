@@ -16,13 +16,9 @@ export function getFormConfiguration(path) {
 }
 
 export function getFieldComponents(fields) {
-    let fieldComponents = []
-    for (let field of fields) {
-        let vueComponent = addVueElement(field)
-        fieldComponents.push(vueComponent)
-    }
-    return fieldComponents
+    return fields.map(addVueElement);
 }
+
 
 function addVueElement(field) {
     let {id, name, type, required = false, defaultValue, options} = field;
