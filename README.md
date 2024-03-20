@@ -25,7 +25,19 @@ phase.</sup>
 
 # :closed_book: Documentation
 
-For further documentation or information, refer to the GitHub Wiki of this repository.
+In the future, more documentation will be provided in a GitHub wiki. As of now, you can execute the following Docker run
+command:
+
+```shell
+docker run --name formative-frontend -t \
+      -p 8080:8080 \
+      -v volume_formative_images:/usr/share/nginx/html/images \
+      -v volume_formative_config:/usr/share/nginx/html/config \
+      --restart unless-stopped \
+      -d ghcr.io/JamesFlanders/formative/formative-frontend:latest
+```
+
+This will start Formative and serve it on http://localhost:8080.
 
 # :calendar: Roadmap
 
