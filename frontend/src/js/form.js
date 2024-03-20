@@ -6,6 +6,12 @@ import DateField from "@/components/fields/DateField.vue";
 import NumberField from "@/components/fields/NumberField.vue";
 
 
+export function getFormConfiguration(path) {
+    return fetch(path).then((response) => {
+        return response.json();
+    });
+}
+
 export function getFieldComponents(fields) {
     let fieldComponents = []
     for (let field of fields) {

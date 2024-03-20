@@ -4,8 +4,8 @@
   </div>
 </template>
 <script>
-import forms from '../../public/config/forms.json';
 import FormCard from "@/components/FormCard.vue";
+import {getFormConfiguration} from "@/js/form";
 
 export default {
   name: "Home",
@@ -14,8 +14,11 @@ export default {
   },
   data() {
     return {
-      forms
+      forms: undefined
     }
+  },
+  async beforeMount() {
+    this.forms = await getFormConfiguration("/config/forms.json")
   }
 }
 </script>
