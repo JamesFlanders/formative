@@ -4,7 +4,7 @@ COPY . .
 
 WORKDIR .
 
-RUN npm install && npm run build
+RUN npm ci && npm run build
 
 FROM  nginx:stable-alpine3.17
 

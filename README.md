@@ -36,7 +36,7 @@ command:
 
 ```shell
 docker run --name formative-frontend -t \
-      -p 8080:8080 \
+      -p 8080:80 \
       -v volume_formative_images:/usr/share/nginx/html/images \
       -v volume_formative_config:/usr/share/nginx/html/config \
       --restart unless-stopped \
