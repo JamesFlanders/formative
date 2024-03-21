@@ -70,5 +70,118 @@
         "method": "GET"
       }
     ]
+  },
+  {
+    "id": "run-a-post-to-anything",
+    "name": "Run a POST to Anything",
+    "image": "asterisk.svg",
+    "description": "Run a POST to Anything, an API for testing calls towards it.",
+    "fields": [
+      {
+        "id": "text",
+        "name": "Text",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "textarea",
+        "name": "Text Area",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "number",
+        "name": "Number",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "email",
+        "name": "Email",
+        "type": "email",
+        "required": true
+      },
+      {
+        "id": "checkbox",
+        "name": "Checkbox",
+        "type": "checkbox",
+        "defaultValue": true,
+        "required": true
+      },
+      {
+        "id": "date",
+        "name": "Date",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "radio",
+        "name": "Radio",
+        "type": "radio",
+        "defaultValue": "Option 2",
+        "required": true,
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3"
+        ]
+      },
+      {
+        "id": "select",
+        "name": "Select",
+        "type": "select",
+        "defaultValue": "Option 5",
+        "required": true,
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4",
+          "Option 5",
+          "Option 6"
+        ]
+      },
+      {
+        "id": "multiselect",
+        "name": "Multiselect",
+        "type": "multiselect",
+        "defaultValue": [
+          "Option 3",
+          "Option 4"
+        ],
+        "required": true,
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ]
+      },
+      {
+        "id": "secret",
+        "name": "Secret",
+        "type": "secret",
+        "required": true
+      }
+    ],
+    "actions": [
+      {
+        "action": "api",
+        "url": "https://httpbin.org/anything",
+        "method": "POST",
+        "body": {
+          "text": "{{text}}",
+          "textarea": "{{textarea}}",
+          "email": "{{email}}",
+          "secret": "{{secret}}",
+          "number": "{{number}}",
+          "checkbox": "{{checkbox}}",
+          "date": "{{date}}",
+          "radio": "{{radio}}",
+          "select": "{{select}}",
+          "multiselect": "{{multiselect}}"
+        }
+      }
+    ]
   }
 ]

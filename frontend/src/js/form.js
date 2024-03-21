@@ -1,9 +1,12 @@
 import {h} from "vue";
-import ShortTextField from "@/components/fields/ShortTextField.vue";
+import TextField from "@/components/fields/TextField.vue";
 import SelectField from "@/components/fields/SelectField.vue";
-import LongTextField from "@/components/fields/LongTextField.vue";
+import TextAreaField from "@/components/fields/TextAreaField.vue";
 import DateField from "@/components/fields/DateField.vue";
 import NumberField from "@/components/fields/NumberField.vue";
+import RadioField from "@/components/fields/RadioField.vue";
+import MultiSelectField from "@/components/fields/MultiSelectField.vue";
+import CheckBoxField from "@/components/fields/CheckBoxField.vue";
 
 
 export function getFormConfiguration(path) {
@@ -13,61 +16,45 @@ export function getFormConfiguration(path) {
 }
 
 export function getFieldComponents(fields) {
-    let fieldComponents = []
-    for (let field of fields) {
-        let vueComponent = addVueElement(field)
-        fieldComponents.push(vueComponent)
-    }
-    return fieldComponents
+    return fields.map(addVueElement);
 }
 
+
 function addVueElement(field) {
-    let vueComponent = null
+    let {id, name, type, required = false, defaultValue, options} = field;
+    let vueComponent = null;
 
-    let required = field.required
-    if (required === undefined || required === null) {
-        required = false
+    switch (type) {
+        case "text":
+            vueComponent = h(TextField, {id, name, subtype: "text", required, value: defaultValue});
+            break;
+        case "textarea":
+            vueComponent = h(TextAreaField, {id, name, required, value: defaultValue});
+            break;
+        case "email":
+            vueComponent = h(TextField, {id, name, subtype: "email", required, value: defaultValue});
+            break;
+        case "secret":
+            vueComponent = h(TextField, {id, name, subtype: "password", required, value: defaultValue});
+            break;
+        case 'number':
+            vueComponent = h(NumberField, {id, name, required, value: defaultValue});
+            break;
+        case "checkbox":
+            vueComponent = h(CheckBoxField, {id, name, value: defaultValue});
+            break;
+        case "select":
+            vueComponent = h(SelectField, {id, name, required, options, value: defaultValue});
+            break;
+        case "multiselect":
+            vueComponent = h(MultiSelectField, {id, name, required, options, value: defaultValue});
+            break;
+        case "radio":
+            vueComponent = h(RadioField, {id, name, required, options, value: defaultValue});
+            break;
+        case "date":
+            vueComponent = h(DateField, {id, name, required});
+            break;
     }
-
-    if (field.type === "shortText") {
-        vueComponent = h(ShortTextField, {
-            id: field.id,
-            name: field.name,
-            required: required,
-            value: field.defaultValue,
-        })
-    }
-    if (field.type === "longText") {
-        vueComponent = h(LongTextField, {
-            id: field.id,
-            name: field.name,
-            required: required,
-            value: field.defaultValue
-        })
-    }
-    if (field.type === 'number') {
-        vueComponent = h(NumberField, {
-            id: field.id,
-            name: field.name,
-            required: required,
-            value: field.defaultValue
-        })
-    }
-    if (field.type === "select") {
-        vueComponent = h(SelectField, {
-            id: field.id,
-            name: field.name,
-            required: required,
-            options: field.options,
-            value: field.defaultValue
-        })
-    }
-    if (field.type === "date") {
-        vueComponent = h(DateField, {
-            id: field.id,
-            name: field.name,
-            required: required
-        })
-    }
-    return vueComponent
+    return vueComponent;
 }

@@ -24,7 +24,7 @@ export function renderResponse(responses, offset) {
     let aside = document.getElementById("col-right");
     let form = document.getElementById("card-form");
 
-    if (form !== undefined && form !== null) {
+    if (form) {
         form.remove()
     }
 
@@ -51,8 +51,29 @@ function setButtonToLoading(button) {
 
 function parseFormElements(formElements) {
     let values = {}
-    for (let i = 0; i < formElements.length; i++) {
+    for (let i = 0; i < formElements.length - 1; i++) {
         let formElement = formElements[i];
+
+        if (formElement.type === "checkbox") {
+            values[formElement.name] = formElement.checked
+            continue
+        }
+
+        if (formElement.name === "multiselect") {
+            let selectedOptions = [];
+            for (let j = 0; j < formElement.options.length; j++) {
+                let option = formElement.options[j];
+                if (option.selected) {
+                    selectedOptions.push(option.value);
+                }
+            }
+            values[formElement.name] = selectedOptions;
+            continue
+        }
+
+        if (formElement.type === "radio" && formElement.checked === false) {
+            continue
+        }
         values[formElement.name] = formElement.value
     }
     return values
@@ -82,6 +103,7 @@ function performApiAction(fields, action) {
 
     if (action.hasOwnProperty("body")) {
         body = parseFieldParameters(fields, action.body);
+        body = JSON.stringify(body);
     }
 
     if (action.hasOwnProperty("headers")) {
