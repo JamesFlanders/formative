@@ -25,10 +25,10 @@ function addVueElement(field) {
     let vueComponent = null;
 
     switch (type) {
-        case "shortText":
+        case "text":
             vueComponent = h(TextField, {id, name, subtype: "text", required, value: defaultValue});
             break;
-        case "longText":
+        case "textarea":
             vueComponent = h(TextAreaField, {id, name, required, value: defaultValue});
             break;
         case "email":

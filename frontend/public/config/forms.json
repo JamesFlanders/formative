@@ -78,15 +78,15 @@
     "description": "Run a POST to Anything, an API for testing calls towards it.",
     "fields": [
       {
-        "id": "short-text",
-        "name": "Short Text",
-        "type": "shortText",
+        "id": "text",
+        "name": "Text",
+        "type": "text",
         "required": true
       },
       {
-        "id": "long-text",
-        "name": "Long Text",
-        "type": "longText",
+        "id": "textarea",
+        "name": "Text Area",
+        "type": "textarea",
         "required": true
       },
       {
@@ -170,8 +170,8 @@
         "url": "https://httpbin.org/anything",
         "method": "POST",
         "body": {
-          "short-text": "{{short-text}}",
-          "long-text": "{{long-text}}",
+          "text": "{{text}}",
+          "textarea": "{{textarea}}",
           "email": "{{email}}",
           "secret": "{{secret}}",
           "number": "{{number}}",
