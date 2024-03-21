@@ -103,6 +103,7 @@ function performApiAction(fields, action) {
 
     if (action.hasOwnProperty("body")) {
         body = parseFieldParameters(fields, action.body);
+        body = JSON.stringify(body);
     }
 
     if (action.hasOwnProperty("headers")) {
