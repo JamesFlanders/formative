@@ -7,6 +7,10 @@ export function setRequired(inputName, value) {
 export function setChecked(inputName, value) {
     const elements = document.getElementsByName(inputName);
     for (const element of elements) {
+        if (!value) {
+            return
+        }
+
         if (element.type === 'radio') {
             element.checked = element.value === value;
         }
