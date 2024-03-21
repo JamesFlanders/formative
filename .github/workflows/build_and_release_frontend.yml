@@ -9,8 +9,6 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}-frontend
 
-permissions: write-all
-
 defaults:
   run:
     working-directory: ./frontend
@@ -46,6 +44,9 @@ jobs:
 
   build-docker-image:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
