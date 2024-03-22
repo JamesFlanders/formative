@@ -1,0 +1,7 @@
+[project]
+name = "Formative"
+
+python_files = ["test_*.py"]
+python_functions = ["test"]
+pythonpath = ["src"]
+testpaths = ["tests"]
