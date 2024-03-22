@@ -1,0 +1,21 @@
+[project]
+name = "Formative"
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = [
+    "-ra",
+    "-q",
+    "-vv",
+    "-s",
+    "-v",
+    "--cache-clear",
+]
+asyncio_mode = "auto"
+python_files = ["test_*.py"]
+python_functions = ["test"]
+pythonpath = ["src"]
+testpaths = ["tests"]
+filterwarnings = [
+    'ignore:There is no current event loop:DeprecationWarning',
+]
