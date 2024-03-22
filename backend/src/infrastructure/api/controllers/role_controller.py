@@ -10,11 +10,6 @@ from service.formative_service import FormativeService
 
 
 class RoleController(Controller):
-    path = "/role"
-
-    dependencies = {
-        "service": Provide(provide_formative_service)
-    }
 
     @post(path="/")
     async def create_role(self, service: FormativeService, data: CreateRoleSchema) -> None:

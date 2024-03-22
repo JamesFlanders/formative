@@ -12,11 +12,6 @@ from service.formative_service import FormativeService
 
 
 class UserController(Controller):
-    path = "/user"
-
-    dependencies = {
-        "service": Provide(provide_formative_service)
-    }
 
     @post(path="/")
     async def create_user(self, service: FormativeService, data: CreateUserSchema) -> None:
