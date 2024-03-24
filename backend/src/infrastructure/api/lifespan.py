@@ -28,9 +28,9 @@ async def provide_lifespan(app: Litestar):
 def __get_engine_url():
     return URL.create(
         drivername=PSQL_ASYNC_DRIVER,
-        username=os.environ["DATABASE_USER"],
-        password=os.environ["DATABASE_PASSWORD"],
-        database=os.environ["DATABASE_NAME"],
-        host=os.environ["DATABASE_HOST"],
-        port=int(os.environ["DATABASE_PORT"]),
+        username="formative",
+        password="ch4ng3m3!",
+        database="formative",
+        host="127.0.0.1",
+        port=5432,
     )

@@ -1,26 +1,27 @@
 from litestar import Controller, post, patch, delete, get
-from litestar.di import Provide
 from litestar.exceptions import NotFoundException, ClientException
 
 from domain.exceptions.incorrect_password_exception import IncorrectPasswordException
 from domain.exceptions.user_not_found_exception import UserNotFoundException
+from domain.role import Role
 from domain.user import User
 from infrastructure.api.schemas.create_user_schema import CreateUserSchema
 from infrastructure.api.schemas.update_user_password_schema import UpdateUserPasswordSchema
-from infrastructure.api.service import provide_formative_service
 from service.formative_service import FormativeService
 
 
 class UserController(Controller):
+    path = "/user"
 
     @post(path="/")
     async def create_user(self, service: FormativeService, data: CreateUserSchema) -> None:
         await service.create_user(
             username=data.username,
-            password=data.password,
             first_name=data.first_name,
             last_name=data.last_name,
-            email=data.email
+            email=data.email,
+            role=Role(data.role),
+            password=data.password
         )
 
     @get(path="/")

@@ -1,8 +1,6 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from domain.role import Role
 from domain.user import User
-from infrastructure.models.role_model import RoleModel
 from infrastructure.models.user_model import UserModel
 from infrastructure.repositories.database_repository import DatabaseRepository
 from service.user_repository import UserRepository

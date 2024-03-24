@@ -1,21 +1,21 @@
 from abc import abstractmethod, ABC
 
-from domain.role import Role
-from infrastructure.models.role_model import RoleModel
+from domain.group import Group
+from infrastructure.models.group_model import GroupModel
 
 
-class RoleRepository(ABC):
+class GroupRepository(ABC):
 
     @abstractmethod
-    async def create(self, role: Role) -> None:
+    async def create(self, role: Group) -> None:
         raise NotImplementedError
 
     @abstractmethod
-    async def get_all(self, offset: int = None, limit: int = None) -> list[RoleModel]:
+    async def get_all(self, offset: int = None, limit: int = None) -> list[GroupModel]:
         raise NotImplementedError
 
     @abstractmethod
-    async def get_by_name(self, name: str) -> RoleModel:
+    async def get_by_name(self, name: str) -> GroupModel:
         raise NotImplementedError
 
     @abstractmethod

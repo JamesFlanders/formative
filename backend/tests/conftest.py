@@ -4,10 +4,11 @@ from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 from sqlmodel import SQLModel
 from testcontainers.postgres import PostgresContainer
 
+from domain.group import Group
 from domain.role import Role
 from domain.user import User
-from infrastructure.models.role_model import RoleModel
 from infrastructure.models.user_model import UserModel
+from infrastructure.models.group_model import GroupModel
 
 
 async def __create_database(engine):
@@ -23,15 +24,15 @@ async def __drop_database(engine):
 async def __populate_database_with_test_data(session):
     users: list[User] = [
         User(username="michaels", email="michael.scott@dundermifflin.com", first_name="Michael", last_name="Scott",
-             password="littlekidlover!"),
+             role=Role.ADMIN, password="littlekidlover!"),
         User(username="jimh", email="jim.halpert@dundermifflin.com", first_name="Jim", last_name="Halpert",
-             password="il0v3p4m!"),
+             role=Role.EDITOR, password="il0v3p4m!"),
     ]
     user_models: list[UserModel] = [UserModel.model_validate(user) for user in users]
-    roles: list[Role] = [Role(name="admin"), Role(name="user"), Role(name="guest")]
-    role_models: list[RoleModel] = [RoleModel.model_validate(role) for role in roles]
+    groups: list[Group] = [Group(name="helpers"), Group(name="moderators"), Group(name="marketeers")]
+    group_models: list[GroupModel] = [GroupModel.model_validate(group) for group in groups]
     session.add_all(user_models)
-    session.add_all(role_models)
+    session.add_all(group_models)
     await session.commit()
 
 

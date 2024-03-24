@@ -1,6 +1,5 @@
 from abc import abstractmethod, ABC
 
-from domain.role import Role
 from domain.user import User
 from infrastructure.models.user_model import UserModel
 

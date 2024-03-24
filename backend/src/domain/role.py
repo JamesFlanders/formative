@@ -1,5 +1,7 @@
-from sqlmodel import SQLModel
+from enum import Enum
 
 
-class Role(SQLModel):
-    name: str
+class Role(str, Enum):
+    ADMIN = "admin"
+    EDITOR = "editor"
+    USER = "user"

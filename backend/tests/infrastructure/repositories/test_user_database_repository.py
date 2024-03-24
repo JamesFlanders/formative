@@ -1,6 +1,7 @@
 import pytest
 from sqlmodel import select
 
+from domain.role import Role
 from domain.user import User
 from infrastructure.models.user_model import UserModel
 from infrastructure.repositories.user_database_repository import UserDatabaseRepository
@@ -13,7 +14,7 @@ def user_database_repository(session):
 
 async def test_create(user_database_repository):
     user = User(username="dwights", email="dwights@dundermifflin.com", first_name="Dwight", last_name="Schrute",
-                password="test")
+                role=Role.USER, password="test")
     await user_database_repository.create(user)
     await user_database_repository.session.commit()
 

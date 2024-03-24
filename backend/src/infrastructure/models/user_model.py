@@ -4,10 +4,10 @@ from sqlalchemy import UniqueConstraint
 from sqlmodel import Field, Relationship
 
 from domain.user import User
-from infrastructure.models.user_role_link import UserRoleLink
+from infrastructure.models.user_group_link import UserGroupLink
 
 if TYPE_CHECKING:
-    from infrastructure.models.role_model import RoleModel
+    from infrastructure.models.group_model import GroupModel
 
 
 class UserModel(User, table=True):
@@ -16,4 +16,4 @@ class UserModel(User, table=True):
 
     id: Optional[int] = Field(default=None, primary_key=True)
 
-    roles: list["RoleModel"] = Relationship(back_populates="users", link_model=UserRoleLink)
+    groups: list["GroupModel"] = Relationship(back_populates="users", link_model=UserGroupLink)
