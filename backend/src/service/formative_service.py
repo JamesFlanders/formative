@@ -16,8 +16,8 @@ class FormativeService:
         self.user_repository = user_repository
         self.group_repository = group_repository
 
-    async def create_user(self, username: str, first_name: str, last_name: str, email: str, role: Role,
-                          password: str) -> None:
+    async def create_user(self, username: str, role: Role, password: str, first_name: str = None, last_name: str = None,
+                          email: str = None) -> None:
         user = User(username=username, first_name=first_name, last_name=last_name, email=email, role=role,
                     password=password)
         await self.user_repository.create(user)

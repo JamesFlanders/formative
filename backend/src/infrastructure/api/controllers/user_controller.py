@@ -17,11 +17,11 @@ class UserController(Controller):
     async def create_user(self, service: FormativeService, data: CreateUserSchema) -> None:
         await service.create_user(
             username=data.username,
+            role=Role(data.role),
+            password=data.password,
             first_name=data.first_name,
             last_name=data.last_name,
-            email=data.email,
-            role=Role(data.role),
-            password=data.password
+            email=data.email
         )
 
     @get(path="/")
@@ -35,7 +35,7 @@ class UserController(Controller):
         except UserNotFoundException as exception:
             raise NotFoundException(exception.message)
 
-    @patch(path="/{username:str}/password/update")
+    @patch(path="/{username:str}/password")
     async def change_user_password(self, service: FormativeService, username: str,
                                    data: UpdateUserPasswordSchema) -> None:
         if not data.new_password == data.new_password_confirmation:
