@@ -35,9 +35,3 @@ jobs:
         uses: VaultVulp/action-pipenv@v2.0.1
         with:
           command: run test
-
-      - name: Upload coverage report to Coveralls
-        uses: coverallsapp/github-action@v2
-        with:
-          format: cobertura
-          github-token: ${{ secrets.GITHUB_TOKEN }}
