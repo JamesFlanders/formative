@@ -34,7 +34,7 @@ jobs:
       - name: Run tests and generate Cobertura report
         uses: VaultVulp/action-pipenv@v2.0.1
         with:
-          command: run pytest --cov=src
+          command: run test
 
       - name: Upload coverage report to Coveralls
         uses: coverallsapp/github-action@v2
