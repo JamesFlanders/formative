@@ -1,0 +1,43 @@
+name: Test Backend
+
+on:
+  push:
+    branches:
+      - '*'
+      - '!master'
+
+defaults:
+  run:
+    working-directory: ./backend
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platforms:
+          - "3.10"
+          - "3.11"
+          - "3.12"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+
+      - name: Install dependencies
+        uses: VaultVulp/action-pipenv@v2.0.1
+        with:
+          command: install -d
+
+      - name: Run tests and generate Cobertura report
+        uses: VaultVulp/action-pipenv@v2.0.1
+        with:
+          command: run pytest --cov=src
+
+      - name: Upload coverage report to Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          format: cobertura
+          github-token: ${{ secrets.GITHUB_TOKEN }}
