@@ -8,6 +8,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}-frontend
+  PLATFORMS: linux/amd64,linux/arm64
 
 defaults:
   run:
@@ -44,11 +45,6 @@ jobs:
 
   build-docker-image:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        platforms:
-          - linux/amd64
-          - linux/arm64
     permissions:
       contents: read
       packages: write
@@ -82,7 +78,7 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          platforms: ${{ matrix.platforms }}
+          platforms: ${{ env.PLATFORMS }}
 
   release:
     runs-on: ubuntu-latest
