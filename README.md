@@ -43,6 +43,8 @@ docker run --name formative-frontend -t \
       -d ghcr.io/jamesflanders/formative-frontend:latest
 ```
 
+<sup>Note: Only amd64 and arm64 architectures are currently supported.</sup>
+
 This will start Formative and serve it on http://localhost:8080.
 
 # :calendar: Roadmap
@@ -64,6 +66,7 @@ features that makes Formative useful for many use-cases.
 - [ ] Add usage of users within Formative
 - [ ] Add Role Base Access Control (permissions) within Formative
 - [ ] Provide an easy-to-use form editor for it within Formative.
+- [ ] Add architecture support for arm/v6 and arm/v7 (Raspberry Pi)
 
 ### :b: Beta
 
